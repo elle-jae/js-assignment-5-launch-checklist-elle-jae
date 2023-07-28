@@ -1,7 +1,17 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+        let pilotNameInput = document.querySelector("input[name=pilotName]")
+        let copilotNameInput = document.querySelector("input[name=copilotName]")
+        let fuelLevelInput = document.querySelector("input[name=fuelLevel]")
+        let cargoMassInput = document.querySelector("input[name=cargoMass]")
 
+        if (pilotNameInput.value.trim() === "" || copilotNameInput.value.trim() === "" || isNaN(fuelLevelInput) || isNaN(cargoMassInput)) {
+            alert("missing fields");
+        } 
+    });
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
    let listedPlanetsResponse;
