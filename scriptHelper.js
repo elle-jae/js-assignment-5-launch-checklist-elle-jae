@@ -17,18 +17,44 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    if (testInput === "") {
+    if (testInput.trim() === "") {
         return "Empty";
     } else if (isNaN(testInput)) {
         return "Not a Number";
     } else {
         return "Is a Number";
     }
-   
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+    let pilotStatus = document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+    let fuelLevelStatus = document.getElementById("fuelStatus");
+    let cargoLevelStatus = document.getElementById("cargoStatus");
+
+if (validateInput(pilot) === "Empty" || validateInput(pilot) === "Is a Number") {
+    alert("Missing or Incorrect Data Required: Pilot Name");
+    if (validateInput(pilot) === "Not a Number") {
+        pilotStatus.innerHTML += `${pilot}`;
+    }
+} else if (validateInput(copilot)=== "Empty" || validateInput(copilot) === "Is a Number") {
+    alert("Missing or Incorrect Data Required: CoPilot Name");
+    if(validateInput(copilot) === "Not a Number") {
+        copilot.innerHTML += `${copilot}`;
+    }
+} else if (validateInput(fuelLevel)=== "Empty" || validateInput(fuelLevel) === "Not a Number") {
+    alert("Missing or Incorrect Data Required: Fuel Level");
+    if (validateInput(fuelLevel) === "Is a Number") {
+        fuelLevel.innerHTML += `${fuelLevel}`;
+    }
+} else if (validateInput(cargoLevel)=== "Empty" || validateInput(cargoLevel) === "Not a Number") {
+        alert("Missing or Incorrect Data Required: Cargo Level");
+        if (validateInput(cargoLevel) === "Is a Number") {
+            cargoLevel.innerHTML += `${cargoLevel}`;
+        }
+} else {
+        alert("Submitted!");
+}
 }
 
 async function myFetch() {
